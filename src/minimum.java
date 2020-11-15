@@ -1,3 +1,5 @@
+import sun.security.internal.spec.TlsKeyMaterialSpec;
+
 /**
  * @author Guanchen Zhao
  * @Description Since function 𝑓(𝑗) is discrete, it can be specified by an array 𝐹[1 … 𝑛] that holds its values in that
@@ -45,4 +47,7 @@ public class minimum {
         return arr;
     }
 
+//    public static void main(String[] args) {
+//        DiffAlgorithm d =
+//    }
 }
