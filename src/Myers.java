@@ -7,31 +7,19 @@ import java.util.Arrays;
  **/
 public class Myers {
 
-    private static int i = 0;
+    private static int compareNumber = 0;
     private static int a[];
     private static int b[];
     private static int M;
     private static int N;
-    private static int editdis = 0;
+    private static int editDistance = 0;
 
-
-    public static void main(String[] args) {
-
-        a = new int[4000];
-        b = new int[5000];
+    public static void execute(int[] source, int[] target) {
+        a = source;
+        b = target;
         M = a.length;
         N = b.length;
-        for (int i = 0; i < a.length; i++) {
-            a[i] = i;
-        }
-        for (int i = 0; i < 600; i++) {
-            a[i + 400] = i + 10000;
-        }
-        for (int i = 0; i < b.length; i++) {
-            b[i] = i;
-        }
         compose();
-        System.out.println("The edit distance is: " + editdis);
     }
 
     public static void compose() {
@@ -53,12 +41,11 @@ public class Myers {
             fp[delta + offset] = snake(delta, fp[delta - 1 + offset] + 1, fp[delta + 1 + offset]);
 
         } while (fp[delta + offset] < N);
-        editdis = delta + 2 * p;
-        System.out.println(i);
+        editDistance = delta + 2 * p;
     }
 
     private static int snake(int k, int p, int pp) {
-        i++;
+        compareNumber++;
         int y = Math.max(p, pp);
         int x = y - k;
         while (x < M && y < N && a[x] == b[y]) {
@@ -68,4 +55,12 @@ public class Myers {
         return y;
     }
 
+
+    public static int getCompareNumber() {
+        return compareNumber;
+    }
+
+    public static int getEditDistance() {
+        return editDistance;
+    }
 }
