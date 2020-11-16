@@ -1,5 +1,3 @@
-import sun.security.internal.spec.TlsKeyMaterialSpec;
-
 /**
  * @author Guanchen Zhao
  * @Description Since function 𝑓(𝑗) is discrete, it can be specified by an array 𝐹[1 … 𝑛] that holds its values in that
@@ -10,21 +8,32 @@ import sun.security.internal.spec.TlsKeyMaterialSpec;
 public class minimum {
 
     public static void main(String[] args) {
-        int[] arr = getInitArray(10000, 77);
-        int index = getIndex(arr);
-        System.out.println(index);
+        int size = 10000;
+        int appointedIndex = 1;
+        int[] arr = generateArray(size, appointedIndex);
+        int index = getTargetIndex(arr);
+        System.out.println("Jmin is: " + index);
     }
 
-    private static int getIndex(int[] F) {
+    /**
+     * @author Guanchen Zhao
+     * @Description
+     * This algorithm is similar to binary search,
+     * the condition of the result is F[target] < F[target-1] and F[target] < F[target+1].
+     * @Date 2020/11/15 10:13
+     **/
+    private static int getTargetIndex(int[] F) {
         int low = 0, high = F.length - 1;
         while (low < high) {
             int mid = (low + high) / 2;
+            // F[mid] is the minimum value
             if (F[mid] < F[mid - 1] && F[mid] < F[mid + 1]) {
                 return mid;
             }
+            // The minimum value is on the right
             if (F[mid] > F[mid + 1]) {
                 low = mid + 1;
-            } else {
+            } else {// The minimum value is on the left
                 high = mid;
             }
         }
@@ -32,7 +41,7 @@ public class minimum {
     }
 
 
-    private static int[] getInitArray(int size, int appointedIndex) {
+    private static int[] generateArray(int size, int appointedIndex) {
         int[] arr = new int[size];
         int origin = 100;
         for (int i = 0; i < arr.length; i++) {
@@ -46,8 +55,4 @@ public class minimum {
         }
         return arr;
     }
-
-//    public static void main(String[] args) {
-//        DiffAlgorithm d =
-//    }
 }

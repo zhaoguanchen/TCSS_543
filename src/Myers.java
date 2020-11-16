@@ -2,14 +2,16 @@ import java.util.Arrays;
 
 /**
  * @Author Guanchen Zhao
- * @Description Wu-Manber-Myers-Miller 𝑂(𝑁𝑃) algorithm
+ * @Description Myers’ 𝑂(𝑁𝐷) algorithm
+ *
+ * class Myers is the Implementation of Myers’ 𝑂(𝑁𝐷) algorithm
  * @Date 5:32 下午 2020/11/15
  **/
 public class Myers {
 
     private static int compareNumber = 0;
-    private static int a[];
-    private static int b[];
+    private static int[] a;
+    private static int[] b;
     private static int M;
     private static int N;
     private static int editDistance = 0;
